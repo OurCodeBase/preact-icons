@@ -1,0 +1,40 @@
+{
+  "name": "preact-fa",
+  "version": "6.7.2",
+  "description": "A font awesome icon library for preact.",
+  "keywords": [
+    "react-icons",
+    "font-awesome",
+    "preact-icons",
+    "lucide-icons"
+  ],
+  "homepage": "https://github.com/OurCodeBase/preact-icons#readme",
+  "bugs": {
+    "url": "https://github.com/OurCodeBase/preact-icons/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OurCodeBase/preact-icons.git"
+  },
+  "license": "ISC",
+  "author": "harsh vairagi",
+  "type": "module",
+  "main": "./dist/preact-icons.js",
+  "module": "./dist/preact-icons.js",
+  "export": {
+    ".": {
+      "import": "./dist/preact-icons.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "clean": "rm ./index.js && rm -rf ./icons; mkdir ./icons",
+    "create": "node create.js",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.2",
+    "preact": "^10.26.9",
+    "vite": "^7.0.3"
+  }
+}
