@@ -19,11 +19,9 @@
   "license": "ISC",
   "author": "harsh vairagi",
   "type": "module",
-  "main": "./dist/preact-icons.js",
-  "module": "./dist/preact-icons.js",
-  "export": {
+  "exports": {
     ".": {
-      "import": "./dist/preact-icons.js"
+      "import": "./dist/preact-fa.js"
     }
   },
   "files": ["dist"],

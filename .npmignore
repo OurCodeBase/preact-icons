@@ -1,0 +1,9 @@
+/.git*
+/icons
+/index.js
+/create.js
+/node_modules
+/fontawesome*
+/vite.config.js
+/package-lock.json
+/skeleton.jsx

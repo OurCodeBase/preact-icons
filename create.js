@@ -1,6 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 
+const skeletonFile = './skeleton.jsx'
+
 function toPascalCase(string = "") {
   return string.split('-')
     .map(value => value.charAt(0).toUpperCase() + value.slice(1))
@@ -15,7 +17,7 @@ function chunkCode(string = "", start = "", end = "") {
 function exportIcons(folder) {
   const index = './index.js'
   const files = fs.readdirSync(folder)
-  var schema = fs.readFileSync('./icon.schema.jsx').toString()
+  var skeleton = fs.readFileSync(skeletonFile).toString()
   files.forEach(file => {
     const filename = file.slice(0, -4)
     // check for filename starts with digits.
@@ -23,8 +25,9 @@ function exportIcons(folder) {
     // svgs code creation.
     var iconCode = fs.readFileSync(path.resolve(folder, file)).toString()
     iconCode = chunkCode(iconCode, "<!--! Font Awesome", "Inc. -->")
-    var schemaCode = schema.replace("{{code}}", iconCode).replace('{{name}}', filename)
-    fs.writeFileSync('./icons/' + filename + '.jsx', schemaCode)
+    iconCode = iconCode.replace('viewBox', `width={size} className="preact-fa ${filename}" viewBox`)
+    iconCode = skeleton.replace("{{code}}", iconCode)
+    fs.writeFileSync('./icons/' + filename + '.jsx', iconCode)
     // index code creation.
     fs.appendFileSync(index, `export { default as ${toPascalCase(filename)} } from './icons/${filename}';\n`)
   })
