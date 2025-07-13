@@ -1,5 +1,8 @@
-/dist
+/*.bak
 /icons
-/index.js
-/node_modules
+/solid
+/brands
+**/dist/
+/regular
 /fontawesome*
+**/node_modules/

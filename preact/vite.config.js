@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [preact()],
   build: {
     lib: {
-      entry: path.resolve(__dirname, './src/index.js'),
+      entry: path.resolve(__dirname, './src/index.tsx'),
       formats: ['es'],
       fileName: () => "e.js"
     },

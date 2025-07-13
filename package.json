@@ -1,38 +1,27 @@
 {
-  "name": "preact-fa",
+  "name": "fa-icons",
   "version": "6.7.2",
   "description": "A font awesome icon library for preact.",
-  "keywords": [
-    "react-icons",
-    "font-awesome",
-    "preact-icons",
-    "lucide-icons"
-  ],
-  "homepage": "https://github.com/OurCodeBase/preact-icons#readme",
-  "bugs": {
-    "url": "https://github.com/OurCodeBase/preact-icons/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/OurCodeBase/preact-icons.git"
-  },
   "license": "ISC",
   "author": "harsh vairagi",
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/preact-fa.js"
-    }
-  },
-  "files": ["dist"],
   "scripts": {
-    "clean": "rm ./index.js && rm -rf ./icons; mkdir ./icons",
     "create": "node create.js",
-    "build": "vite build"
+    "clean:solid": "rm -rf ./solid",
+    "clean:brands": "rm -rf ./brands",
+    "clean:regular": "rm -rf ./regular",
+    "clean": "npm run clean:solid && npm run clean:brands && npm run clean:regular",
+    "build:solid": "vite build --config ./solid/vite.config.js",
+    "build:brands": "vite build --config ./brands/vite.config.js",
+    "build:regular": "vite build --config ./regular/vite.config.js",
+    "build:preact": "vite build --config ./preact/vite.config.js && cd preact; npm run build",
+    "build": "npm run build:solid && npm run build:brands && npm run build:regular && npm run build:preact",
+    "all": "npm run clean && npm run create && npm run build"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.2",
     "preact": "^10.26.9",
+    "svg-parser": "^2.0.4",
     "vite": "^7.0.3"
   }
 }

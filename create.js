@@ -1,46 +1,58 @@
 import fs from 'fs'
 import path from 'path'
+import { parse } from 'svg-parser'
 
-const skeletonFile = './skeleton.jsx'
+// user configuration.
+const faFolder = './fontawesome'
+const iconPacks = ['brands', 'solid', 'regular']
+
+// global variables.
+const faPath = path.resolve(faFolder, 'svgs')
+const iconSkeleton = fs.readFileSync('./skeleton.icon.txt').toString()
+const readmeSkeleton = fs.readFileSync('./skeleton.readme.txt').toString()
+const packageSkeleton = fs.readFileSync('./skeleton.package.txt').toString()
 
 function toPascalCase(string = "") {
   return string.split('-')
-    .map(value => value.charAt(0).toUpperCase() + value.slice(1))
-    .join('')
-}
-
-function chunkCode(string = "", start = "", end = "") {
-  const regex = new RegExp(`${start}.*?${end}`, 'gs')
-  return string.replace(regex, '')
+  .map(value => value.charAt(0).toUpperCase() + value.slice(1))
+  .join('')
 }
 
 function exportIcons(folder) {
-  const index = './index.js'
   const files = fs.readdirSync(folder)
-  var skeleton = fs.readFileSync(skeletonFile).toString()
+  const iconsSrc = `./${path.basename(folder)}/src`
+  const indexFile = `${iconsSrc}/index.js`
+  var indexCode = ""
   files.forEach(file => {
     const filename = file.slice(0, -4)
-    // check for filename starts with digits.
     if (/\d/.test(filename)) { return }
-    // svgs code creation.
     var iconCode = fs.readFileSync(path.resolve(folder, file)).toString()
-    iconCode = chunkCode(iconCode, "<!--! Font Awesome", "Inc. -->")
-    iconCode = iconCode.replace('viewBox', `width={size} className="preact-fa ${filename}" viewBox`)
-    iconCode = skeleton.replace("{{code}}", iconCode)
-    fs.writeFileSync('./icons/' + filename + '.jsx', iconCode)
-    // index code creation.
-    fs.appendFileSync(index, `export { default as ${toPascalCase(filename)} } from './icons/${filename}';\n`)
+    var iconAtts = parse(iconCode)
+    var iconBinds = iconSkeleton.replace("{{name}}", filename)
+    iconBinds = iconBinds.replace("{{d}}", iconAtts.children[0].children[0].properties.d)
+    iconBinds = iconBinds.replace("{{viewBox}}", iconAtts.children[0].properties.viewBox)
+    fs.writeFileSync(`${iconsSrc}/${filename}.js`, iconBinds)
+    indexCode = indexCode + `export { default as fa${toPascalCase(filename)} } from './${filename}.js';\n`
   })
+  fs.writeFileSync(indexFile, indexCode)
 }
 
 function create() {
-  const fontawesome = path.resolve('./fontawesome', 'svgs')
-  // const models = ['brands', 'solid']
-  const models = ['solid']
-  models.forEach(model => {
-    const modelpath = path.resolve(fontawesome, model)
-    exportIcons(modelpath)
-    console.log('Exporting', model, '...')
+  // svgs like brands, solid and regular.
+  iconPacks.forEach(pack => {
+    // re-configure all folders.
+    fs.mkdirSync(`./${pack}`)
+    fs.mkdirSync(`./${pack}/src`)
+    // write readme and package files of icons.
+    fs.writeFileSync(`./${pack}/README.md`, readmeSkeleton.replaceAll("{{name}}", pack))
+    fs.writeFileSync(`./${pack}/package.json`, packageSkeleton.replaceAll("{{name}}", pack))
+    // copy vite-config and npmignore files of icons.
+    fs.cpSync('./vite.config.js', `./${pack}/vite.config.js`)
+    fs.cpSync('./skeleton.npmignore.txt', `./${pack}/.npmignore`)
+    // full filepaths like ./fontawesome/svgs/solid
+    const faPack = path.resolve(faPath, pack)
+    exportIcons(faPack)
+    console.log('Exporting', pack, '...')
   })
 }
 

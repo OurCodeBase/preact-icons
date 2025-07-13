@@ -1,0 +1,38 @@
+{
+  "name": "@fa-icons/preact",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "A bridge to use @fa-icons.",
+  "homepage": "https://github.com/OurCodeBase/preact-icons#readme",
+  "bugs": {
+    "url": "https://github.com/OurCodeBase/preact-icons/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OurCodeBase/preact-icons.git"
+  },
+  "license": "ISC",
+  "author": "harsh vairagi",
+  "type": "module",
+  "main": "dist/e.js",
+  "module": "dist/e.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/e.js"
+    }
+  },
+  "scripts": {
+    "check:deps": "(npm ls typescript > /dev/null || npm i)",
+    "build": "npm run check:deps && tsc"
+  },
+  "devDependencies": {
+    "tsc": "^2.0.4",
+    "typescript": "^5.8.3"
+  }
+}

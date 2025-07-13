@@ -1,0 +1,24 @@
+{
+  "name": "@fa-icons/{{name}}",
+  "version": "6.7.2",
+  "description": "A bundle of {{name}} icons from font-awesome.",
+  "homepage": "https://github.com/OurCodeBase/preact-icons#readme",
+  "bugs": {
+    "url": "https://github.com/OurCodeBase/preact-icons/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OurCodeBase/preact-icons.git"
+  },
+  "license": "ISC",
+  "author": "harsh vairagi",
+  "type": "module",
+  "main": "dist/e.js",
+  "module": "dist/e.js",
+  "files": ["dist"],
+  "exports": {
+    ".": {
+      "import": "./dist/e.js"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+
+# @fa-icons/{{name}}
+
+A bundle of {{name}} icons from font-awesome.
+
+## Documentation
+
+You can find docs on [preact-icons](https://github.com/OurCodeBase/preact-icons) repo hosted on github.
+
+Also, you can find all icon references on official website of font awesome [@fa/{{name}}](https://fontawesome.com/icons/packs/{{name}}).
+
+## Disclaimer
+
+@fa-icons/{{name}} uses icons from font awesome free, which are licensed under the creative commons attribution 4.0 international license (CC BY 4.0). font awesome is a trademark of fonticons, inc.
+
+all font awesome free icons used herein are for illustrative and enhancement purposes only and are attributed appropriately. no claim of ownership is made over the font awesome icons. for more information, visit https://fontawesome.com.
+

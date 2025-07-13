@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist/types",
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "target": "ESNext",
+    "jsxImportSource": "preact",
+    "moduleResolution": "Node"
+  },
+  "include": ["src"]
+}
