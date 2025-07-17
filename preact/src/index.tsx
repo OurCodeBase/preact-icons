@@ -17,7 +17,7 @@ export const Fa = ({icon, size = "1em", style, className}: FaParams) => {
     </svg>`)
   }
   if (document.getElementById(id) === null) appendChild()
-  return <svg style={{ width: size, height: size, verticalAlign: 'text-bottom', ...style }} className={`fa-icons${className ? ` ${className}` : ''}`}>
+  return <svg style={{ width: size, height: size, verticalAlign: 'middle', ...style }} className={`fa-icons${className ? ` ${className}` : ''}`}>
     <use fill="currentColor" href={`#${id}`}/>
   </svg>
 }
