@@ -1,6 +1,6 @@
 {
   "name": "@fa-icons/preact",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publishConfig": {
     "access": "public"
   },
@@ -28,8 +28,7 @@
     }
   },
   "scripts": {
-    "check:deps": "(npm ls typescript > /dev/null || npm i)",
-    "build": "npm run check:deps && tsc"
+    "build": "(npm ls typescript > /dev/null || npm i) && tsc"
   },
   "devDependencies": {
     "tsc": "^2.0.4",
