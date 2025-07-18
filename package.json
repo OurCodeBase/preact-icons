@@ -7,10 +7,7 @@
   "type": "module",
   "scripts": {
     "create": "node create.js",
-    "clean:solid": "rm -rf ./solid",
-    "clean:brands": "rm -rf ./brands",
-    "clean:regular": "rm -rf ./regular",
-    "clean": "npm run clean:solid && npm run clean:brands && npm run clean:regular",
+    "clean": "rm -rf ./solid ./brands ./regular",
     "build:solid": "vite build --config ./solid/vite.config.js",
     "build:brands": "vite build --config ./brands/vite.config.js",
     "build:regular": "vite build --config ./regular/vite.config.js",

@@ -1,6 +1,6 @@
 {
   "name": "@fa-icons/{{name}}",
-  "version": "6.7.2",
+  "version": "1.0.1",
   "description": "A bundle of {{name}} icons from font-awesome.",
   "homepage": "https://github.com/OurCodeBase/preact-icons#readme",
   "bugs": {
@@ -15,7 +15,8 @@
   "type": "module",
   "main": "dist/e.js",
   "module": "dist/e.js",
-  "files": ["dist"],
+  "types": "types/e.d.ts",
+  "files": ["dist", "types"],
   "exports": {
     ".": {
       "import": "./dist/e.js"

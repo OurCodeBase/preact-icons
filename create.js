@@ -22,7 +22,9 @@ function exportIcons(folder) {
   const files = fs.readdirSync(folder)
   const iconsSrc = `./${path.basename(folder)}/src`
   const indexFile = `${iconsSrc}/index.js`
+  const definFile = `./${path.basename(folder)}/types/e.d.ts`
   var indexCode = ""
+  var definCode = "export interface FaDefinition { name: string, d: string, viewBox: string }\n"
   files.forEach(file => {
     const filename = file.slice(0, -4)
     if (/\d/.test(filename)) { return }
@@ -33,8 +35,10 @@ function exportIcons(folder) {
     iconBinds = iconBinds.replace("{{viewBox}}", iconAtts.children[0].properties.viewBox)
     fs.writeFileSync(`${iconsSrc}/${filename}.js`, iconBinds)
     indexCode = indexCode + `export { default as fa${toPascalCase(filename)} } from './${filename}.js';\n`
+    definCode = definCode + `export const fa${toPascalCase(filename)}: FaDefinition\n`
   })
   fs.writeFileSync(indexFile, indexCode)
+  fs.writeFileSync(definFile, definCode)
 }
 
 function create() {
@@ -43,6 +47,7 @@ function create() {
     // re-configure all folders.
     fs.mkdirSync(`./${pack}`)
     fs.mkdirSync(`./${pack}/src`)
+    fs.mkdirSync(`./${pack}/types`)
     // write readme and package files of icons.
     fs.writeFileSync(`./${pack}/README.md`, readmeSkeleton.replaceAll("{{name}}", pack))
     fs.writeFileSync(`./${pack}/package.json`, packageSkeleton.replaceAll("{{name}}", pack))
