@@ -1,6 +1,6 @@
 {
   "name": "@fa-icons/preact",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "publishConfig": {
     "access": "public"
   },
@@ -13,6 +13,12 @@
     "type": "git",
     "url": "git+https://github.com/OurCodeBase/preact-icons.git"
   },
+  "keywords": [
+    "react-icons",
+    "preact-icons",
+    "font-awesome",
+    "lucide-icons"
+  ],
   "license": "ISC",
   "author": "harsh vairagi",
   "type": "module",

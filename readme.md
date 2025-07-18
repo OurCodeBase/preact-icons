@@ -9,6 +9,7 @@ An unofficial font awesome icon library for preact.
 - ✅ **Svg reuse** (icon's svg path will not repeat itselft in dom)
 - ✅ **Autocompletions** (supports inline css style autocompletions)
 - ✅ **Extension approach** (not all *categories* of icon bloat your code-editor.)
+
 ## Documentation
 
 - Install @fa-icon/preact icon driver -
@@ -63,6 +64,7 @@ export function App() {
   font-size: 500px;
 }
 ```
+
 ## Icons Registry
 
 | **Tags** |                           **NPM Registry**                           |                   **Font Awesome Registry**                  |

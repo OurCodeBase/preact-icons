@@ -6,19 +6,23 @@ A bridge to use @fa-icons efficiently.
 ## Features
 
 - ✅ **Tree-shaking** (only include icons that you're using)
-- ✅ **Svg reuse** (icon's path will not repeat itselft in dom)
+- ✅ **Svg reuse** (icon's svg path will not repeat itselft in dom)
 - ✅ **Autocompletions** (supports inline css style autocompletions)
+- ✅ **Extension approach** (not all *categories* of icon bloat your code-editor.)
 
 ## Documentation
 
-You can find docs on [preact-icons](https://github.com/OurCodeBase/preact-icons) repo hosted on github.
-
-- Install it using npm -
+- Install @fa-icon/preact icon driver -
 ```sh
-npm i --save @fa-icons/preact
-
+npm i --save @fa-icon/preact
 ```
-- After installation, you can use it in your preact app.
+
+- You can use any icon binding from @fa-icons like `@fa-icons/brands`, `@fa-icons/solid`, `@fa-icons/regular`. In this example, we are going to install just the @fa-icons/brands binding.
+```sh
+npm i --save @fa-icons/brands
+```
+
+- And finally, you can use the icons -
 ```jsx
 import './app.css'
 import { Fa } from '@fa-icons/preact'
@@ -26,7 +30,7 @@ import { faAndroid, faApple, faAudible } from '@fa-icons/brands'
 
 export function App() {
   return <>
-    <Fa icon={faApple} style={{ fill: "white" }}/>
+    <Fa icon={faApple} style={{ color: "white" }}/>
     <Fa icon={faAndroid} size="2em"/>
     <Fa icon={faAudible} className="audible"/>
   </>
