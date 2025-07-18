@@ -1,6 +1,6 @@
 {
   "name": "@fa-icons/preact",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "publishConfig": {
     "access": "public"
   },
@@ -30,7 +30,7 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/e.js"
+      "import": "dist/e.js"
     }
   },
   "scripts": {
